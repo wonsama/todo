@@ -1,0 +1,14 @@
+version: "3"
+services:
+  db:
+    image: postgres:latest
+    command: postgres -c stats_temp_directory=/tmp
+    container_name: postgres
+    restart: always
+    ports:
+      - "9999:5432"
+    environment:
+      POSTGRES_USER: "systodo"
+      POSTGRES_PASSWORD: "systodo1234"
+    volumes:
+      - ./data/:/var/lib/postgresql/data

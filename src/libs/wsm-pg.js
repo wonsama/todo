@@ -7,10 +7,10 @@
 import debug from "debug";
 import { fileURLToPath } from "url";
 import fs from "fs";
-import path from "path";
+import { join } from "path";
 import pg from "pg";
 
-const { join } = path;
+// const { join } = path;
 const { Client } = pg;
 
 const __filename = fileURLToPath(import.meta.url);

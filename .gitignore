@@ -107,3 +107,5 @@ dist
 scripts/docker/postgresql/data/*
 package-lock.json
 yarn.lock
+test.js
+.DS_Store

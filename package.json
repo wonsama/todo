@@ -9,9 +9,12 @@
   },
   "scripts": {
     "wcuser": "SET DEBUG=* & node ./scripts/util/create_user.js",
-    "wdev": "SET DEBUG=* & nodemon ./src/app.js --ignore **/scripts/** --ignore **/*.md --ignore **/*.sql",
-    "wcache": "SET DEBUG=express:router:route,todo:* & nodemon ./scripts/sample/redis-cache.js --ignore **/scripts/** --ignore **/*.md --ignore **/*.sql",
-    "wtest": "SET DEBUG=express:router:route,todo:* & nodemon ./test.js --ignore **/scripts/** --ignore **/*.md --ignore **/*.sql"
+    "mcuser": "DEBUG=* node ./scripts/util/create_user.js",
+    "mdev": "DEBUG=express:router:route,todo:* nodemon ./app.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
+    "wdev": "SET DEBUG=express:router:route,todo:* & nodemon ./app.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
+    "wcache": "SET DEBUG=express:router:route,todo:* & nodemon ./scripts/sample/redis-cache.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
+    "mcache": "DEBUG=express:router:route,todo:* nodemon ./scripts/sample/redis-cache.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
+    "wtest": "SET DEBUG=express:router:route,todo:* & nodemon ./test.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql"
   },
   "repository": {
     "type": "git",
@@ -46,6 +49,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.12",
     "@types/node": "^18.11.0",
     "nodemon": "^2.0.20",
     "pm2": "^5.2.2",

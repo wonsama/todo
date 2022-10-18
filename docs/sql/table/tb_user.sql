@@ -4,7 +4,7 @@
 
 -- DROP TABLE public.tb_user;
 
-CREATE TABLE public.tb_user (
+CREATE TABLE IF NOT EXISTS public.tb_user (
 	user_id varchar(16) NOT NULL,
 	user_nm varchar(32) NOT NULL,
     user_pw varchar(64) NOT NULL, -- SHA256, 단방향 확인
@@ -17,7 +17,7 @@ CREATE TABLE public.tb_user (
 	modifier_id varchar(16) NOT NULL DEFAULT 'SYSTEM',
 	modified_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-	CONSTRAINT tb_user_pk PRIMARY KEY (user_id)
+	CONSTRAINT pk_tb_user PRIMARY KEY (user_id)
 );
 COMMENT ON TABLE public.tb_user IS '사용자';
 

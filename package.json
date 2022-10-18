@@ -1,0 +1,55 @@
+{
+  "type": "module",
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "## 환경구성",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "wcuser": "SET DEBUG=* & node ./scripts/util/create_user.js",
+    "wdev": "SET DEBUG=* & nodemon ./src/app.js --ignore **/scripts/** --ignore **/*.md --ignore **/*.sql",
+    "wcache": "SET DEBUG=express:router:route,todo:* & nodemon ./scripts/sample/redis-cache.js --ignore **/scripts/** --ignore **/*.md --ignore **/*.sql",
+    "wtest": "SET DEBUG=express:router:route,todo:* & nodemon ./test.js --ignore **/scripts/** --ignore **/*.md --ignore **/*.sql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wonsama/todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wonsama/todo/issues"
+  },
+  "homepage": "https://github.com/wonsama/todo#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "chart.js": "^3.9.1",
+    "connect-redis": "^6.1.3",
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "http-errors": "^2.0.0",
+    "i18next": "^21.10.0",
+    "i18next-fs-backend": "^1.1.5",
+    "i18next-http-middleware": "^3.2.1",
+    "memorystore": "^1.6.7",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.2.10",
+    "pg": "^8.8.0",
+    "pug": "^3.0.2",
+    "redis": "^4.3.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.0",
+    "nodemon": "^2.0.20",
+    "pm2": "^5.2.2",
+    "postcss": "^8.4.18",
+    "tailwindcss": "^3.1.8"
+  }
+}

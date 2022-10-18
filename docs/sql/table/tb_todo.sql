@@ -4,7 +4,7 @@
 
 -- DROP TABLE public.tb_todo;
 
-CREATE TABLE public.tb_todo (
+CREATE TABLE IF NOT EXISTS public.tb_todo (
 	id bigint NOT NULL DEFAULT nextval('seq_tb_todo_id'::regclass),
 	assigned_yn char(1) NOT NULL DEFAULT 'N',
 	cont varchar(2048) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE public.tb_todo (
 	modifier_id varchar(16) NOT NULL DEFAULT 'SYSTEM',
 	modified_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-	CONSTRAINT tb_todo_pk PRIMARY KEY (id)
+	CONSTRAINT pk_tb_todo PRIMARY KEY (id)
 );
 COMMENT ON TABLE public.tb_todo IS '할 일';
 

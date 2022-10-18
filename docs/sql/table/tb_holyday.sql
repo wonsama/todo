@@ -4,7 +4,7 @@
 
 -- DROP TABLE public.tb_holyday;
 
-CREATE TABLE public.tb_holyday (
+CREATE TABLE IF NOT EXISTS public.tb_holyday (
 	locdate varchar(8) NOT NULL,
 	date_name varchar(128) NOT NULL,
 	date_kind_cd varchar(2) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE public.tb_holyday (
 	modifier_id varchar(16) NOT NULL DEFAULT 'SYSTEM',
 	modified_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-	CONSTRAINT tb_holyday_pk PRIMARY KEY (locdate)
+	CONSTRAINT pk_tb_holyday PRIMARY KEY (locdate)
 );
 COMMENT ON TABLE public.tb_holyday IS '휴일';
 

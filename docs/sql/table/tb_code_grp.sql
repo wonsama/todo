@@ -4,7 +4,7 @@
 
 -- DROP TABLE public.tb_code_grp;
 
-CREATE TABLE public.tb_code_grp (
+CREATE TABLE IF NOT EXISTS public.tb_code_grp (
 	grp_cd varchar(32) NOT NULL,
 	grp_cd_nm varchar(128) NOT NULL,
 	grp_cd_desc varchar(512) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE public.tb_code_grp (
 	modifier_id varchar(16) NOT NULL DEFAULT 'SYSTEM',
 	modified_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-	CONSTRAINT tb_code_grp_pk PRIMARY KEY (grp_cd)
+	CONSTRAINT pk_tb_code_grp PRIMARY KEY (grp_cd)
 );
 COMMENT ON TABLE public.tb_code_grp IS '코드 그룹';
 

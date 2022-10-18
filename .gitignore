@@ -103,4 +103,7 @@ dist
 # TernJS port file
 .tern-port
 
-scripts/data/*
+# wonsama added
+scripts/docker/postgresql/data/*
+package-lock.json
+yarn.lock

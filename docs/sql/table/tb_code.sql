@@ -4,7 +4,7 @@
 
 -- DROP TABLE public.tb_code;
 
-CREATE TABLE public.tb_code (
+CREATE TABLE IF NOT EXISTS public.tb_code (
 	grp_cd varchar(32) NOT NULL,
 	cd varchar(32) NOT NULL,
 	cd_nm varchar(128) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE public.tb_code (
 	modifier_id varchar(16) NOT NULL DEFAULT 'SYSTEM',
 	modified_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-	CONSTRAINT tb_code_pk PRIMARY KEY (grp_cd, cd)
+	CONSTRAINT pk_tb_code PRIMARY KEY (grp_cd, cd)
 );
 COMMENT ON TABLE public.tb_code IS '코드';
 

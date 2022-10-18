@@ -1,0 +1,42 @@
+version: "3"
+services:
+  # POSTGRESQL
+  postgres:
+    image: postgres:15.0
+    # command: postgres -c stats_temp_directory=/tmp
+    container_name: postgres
+    restart: always
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    ports:
+      - "7777:5432"
+    environment:
+      POSTGRES_USER: "systodo"
+      POSTGRES_PASSWORD: "systodo1234"
+      POSTGRES_DB: "systodo"
+    volumes:
+      - ./postgresql/data/:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./postgresql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+  # ADMINER - WEB DB CMS
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    depends_on:
+      - postgres
+    restart: always
+    ports:
+      # beware of unsafe port - ex) 6666 ...
+      - 8080:8080
+  # REDIS
+  redis:
+    image: bitnami/redis:latest
+    container_name: redis
+    environment:
+      REDIS_PASSWORD: "systodo1234"
+    volumes:
+      - ./redis/data/:/data
+    ports:
+      - 6666:6379

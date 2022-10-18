@@ -4,7 +4,7 @@
 
 -- DROP TABLE public.tb_todo_assign;
 
-CREATE TABLE public.tb_todo_assign (
+CREATE TABLE IF NOT EXISTS public.tb_todo_assign (
 	todo_id bigint NOT NULL,
     account_id varchar(16) NOT NULL,
 	done_yn char(1) NOT NULL DEFAULT 'N',
@@ -16,7 +16,7 @@ CREATE TABLE public.tb_todo_assign (
 	modifier_id varchar(16) NOT NULL DEFAULT 'SYSTEM',
 	modified_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-	CONSTRAINT tb_todo_assign_pk PRIMARY KEY (todo_id, account_id)
+	CONSTRAINT pk_tb_todo_assign PRIMARY KEY (todo_id, account_id)
 );
 COMMENT ON TABLE public.tb_todo_assign IS '할 일 할당';
 

@@ -29,7 +29,7 @@ async function init() {
 
   // 사용자 존재여부 조회
   let p1 = [user_id];
-  let r1 = await getQuery("TODO", "user", "sel_user_exist", p1);
+  let r1 = await getQuery("TODO", "user", "sel_one_user", p1);
   if (r1.rowCount == 1) {
     elog(`user [${user_id}] already exist`);
     return;

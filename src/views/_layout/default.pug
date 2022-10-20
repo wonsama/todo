@@ -1,0 +1,18 @@
+doctype html
+include ./_partials/banner.pug
+
+html(lang='ko')
+  head
+    include ./_partials/header.pug
+    block styles
+    scripts
+      include ./_partials/scripts.pug
+  body
+    div(id="wrapper")
+      header(id="header")
+      div(id="sub-container")
+        div(id="content" class="lay-type-f")
+          block content
+      div(id="myModal" class="modal-wrap")
+      
+    

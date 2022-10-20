@@ -1,0 +1,139 @@
+@charset "utf-8";
+/****************************************/
+/* Name: IWP
+/* PART: BASE STYLE 
+/* Version: 1.0 / day: 2022-05-30
+/* Author:  
+/****************************************/
+
+/* roboto-300 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../css/font/roboto-v30-latin-300.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../css/font/roboto-v30-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../css/font/roboto-v30-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../css/font/roboto-v30-latin-300.woff') format('woff'); /* Modern Browsers */
+  unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+}
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../css/font/roboto-v30-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../css/font/roboto-v30-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../css/font/roboto-v30-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../css/font/roboto-v30-latin-regular.woff') format('woff'); /* Modern Browsers */
+  unicode-range:U+0041-005A, U+0061-007A, U+0030-0039;
+}
+/* roboto-500 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../css/font/roboto-v30-latin-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../css/font/roboto-v30-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../css/font/roboto-v30-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../css/font/roboto-v30-latin-500.woff') format('woff'); /* Modern Browsers */
+  unicode-range:U+0041-005A, U+0061-007A, U+0030-0039;
+}
+/* roboto-700 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../css/font/roboto-v30-latin-700.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../css/font/roboto-v30-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../css/font/roboto-v30-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../css/font/roboto-v30-latin-700.woff') format('woff'); /* Modern Browsers */
+  unicode-range:U+0041-005A, U+0061-007A, U+0030-0039;
+}
+
+
+/* noto-sans-kr */
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../css/font/noto-sans-kr-v12-latin_korean-300.eot'); /* IE9 Compat Modes */
+    src: local('Noto Sans KR Light'), local('NotoSansKR-Light'),
+         url('../css/font/noto-sans-kr-v12-latin_korean-300.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../css/font/noto-sans-kr-v12-latin_korean-300.woff') format('woff'); /* Modern Browsers */
+  }
+  
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../css/font/noto-sans-kr-v12-latin_korean-500.eot'); /* IE9 Compat Modes */
+    src: local('Noto Sans KR Medium'), local('NotoSansKR-Medium'),
+         url('../css/font/noto-sans-kr-v12-latin_korean-500.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../css/font/noto-sans-kr-v12-latin_korean-500.woff') format('woff'); /* Modern Browsers */
+  }
+
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../css/font/noto-sans-kr-v12-latin_korean-regular.eot'); /* IE9 Compat Modes */
+    src: local('Noto Sans KR Regular'), local('NotoSansKR-Regular'),
+         url('../css/font/noto-sans-kr-v12-latin_korean-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../css/font/noto-sans-kr-v12-latin_korean-regular.woff') format('woff'); /* Modern Browsers */
+  }
+
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../css/font/noto-sans-kr-v12-latin_korean-700.eot'); /* IE9 Compat Modes */
+    src: local('Noto Sans KR Bold'), local('NotoSansKR-Bold'),
+         url('../css/font/noto-sans-kr-v12-latin_korean-700.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../css/font/noto-sans-kr-v12-latin_korean-700.woff') format('woff'); /* Modern Browsers */
+  }
+
+  @font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../css/font/noto-sans-kr-v12-latin_korean-900.eot'); /* IE9 Compat Modes */
+    src: local('Noto Sans KR Black'), local('NotoSansKR-Black'),
+         url('../css/font/noto-sans-kr-v12-latin_korean-900.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../css/font/noto-sans-kr-v12-latin_korean-900.woff') format('woff'); /* Modern Browsers */
+  }
+
+html{font-size: 10px;}
+body{text-align: left;font-size:1.4rem;color:#000;line-height:1.3;font-family:'Roboto','Noto Sans KR', sans-serif;font-weight:300;letter-spacing: -0.5px;background-color:#fff}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,span,form,fieldset,p,button,address,table, tbody, tfoot, thead, th, tr, tdvideo, tt{margin:0;padding:0;box-sizing: border-box;}
+header,article,aside,canvas,details,figcaption,figure,footer,hgroup,menu,nav,section,summary,mark {display:block;margin: 0; padding: 0;box-sizing: border-box;}
+h1,h2,h3,h4,h5,h6{box-sizing: border-box;}
+input,button,textarea,select,table{box-sizing: border-box;}
+input,button,textarea,select{border-radius:0;box-sizing: border-box;} /*-webkit-appearance: none*/
+button,textarea{-webkit-appearance: none}
+img,fieldset,iframe{border:0 none}
+li{list-style:none}
+img,input,select,button,textarea{vertical-align:middle;box-sizing: border-box;font-family:'Roboto','Noto Sans KR', sans-serif;}
+input[type=radio]{border-radius:0px 0px;-webkit-border-radius: 50%;}
+input[type=radio]:checked{background-color:#363636;}
+img{max-width:100%}
+em,address,optgroup{font-style:normal}
+label,button{cursor:pointer}
+label{position: relative;}
+button{margin:0;padding:0;border:0;background-color:transparent}
+a,::after,::before{box-sizing: border-box}
+a{text-decoration: none;color:#000;color: inherit;}
+a:hover{text-decoration:underline}
+hr{display:none}
+legend,caption{font-size:0; width:0; height:0; line-height:0;overflow:hidden;text-indent:-9999px}
+p{word-wrap: break-word;}
+dt,dd,li{word-wrap: break-word;}
+table {width:100%;font-weight:400;border-spacing:0;border-collapse: collapse;border: 0;}
+input,button,label,select,a{-webkit-tap-highlight-color : transparent;}
+/* hidden contents */
+.skip,.hidden{position:absolute; width:1px; height:1px; font-size:0; line-height:0; overflow:hidden; z-index:-1}
+input:focus, select:focus, option:focus, textarea:focus, button:focus{outline: none;}

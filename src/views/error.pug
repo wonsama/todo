@@ -1,6 +1,12 @@
-extends layout
+//- file : error.pug
+//- title : 오류페이지
+//- @since 2022-10-20
+extends ./_layout/none
 
 block content
-  h1= message
-  h2= err.status
-  pre #{err.stack}
+	.login-con
+		.login-box
+			h1=message
+			p.gud_txt=err.stack
+			.logo-txt2
+				p status code : #{err.status}

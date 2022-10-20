@@ -1,0 +1,23 @@
+//- file : index.pug
+//- title : 시작페이지
+//- @since 2022-10-20
+extends ./_layout/none
+
+block content
+	.login-con
+		.login-box
+			h1 SYSNOVA TODO
+			p.gud_txt The ID/PW you entered did not match. Please try again
+			.login-inp-wrap
+				.login-ico-inp.type1
+					input.inpw(type="text" placeholder="USERNAME" id="user_id" name="user_id")
+				.login-ico-inp.type2
+					input.inpw(type="password" placeholder="PASSWORD" id="user_pw" name="user_pw")
+			button.btn-login.fon-16(type="submit") Login
+			.logo-txt1
+				input(type="checkbox" name="remember_id" id="remember_id" class="check-box")
+				label(for="remember_id") REMEMBER ID
+				a(href="#") Forgot Password?
+			.logo-txt2
+				p Don’t have an account?
+				button.btn-bc.type-round(type="button") Register Here

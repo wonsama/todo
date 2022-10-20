@@ -16,9 +16,11 @@ import debug from "debug";
 import express from "express";
 import { fileURLToPath } from "url";
 import path from "path";
+import registerRoutes from "./src/routes/_register.js";
 import session from "express-session";
 
-const { join } = path;
+// import createError from "http-errors";
+// const { join } = path;
 
 // CONFIG - WEB
 const WEB_PORT = process.env.WEB_PORT || 5555;
@@ -80,33 +82,23 @@ app.use(
 );
 
 // Express Routes
-const router = express.Router();
-app.use(
-  "/",
-  router.get("/", function (req, res, next) {
-    res.json({ hello: "world" });
-  })
-);
+registerRoutes(app);
 
-// catch 404 and forward to error handler
-app.use(function (err, req, res, next) {
-  console.log(1, err);
-  next(createError(404));
-});
+// // 내부 파일 NOT FOUND 오류
+// app.use(function (err, req, res, next) {
+//   console.log(1, err);
+//   next(createError(404));
+// });
 
-// error handler
+// 내부서버 오류
 app.use(function (err, req, res, next) {
   console.log(2, err);
   res.status(err.status || 500);
   res.render("error", { err });
 });
 
-// not found
+// maching page not found
 app.get("*", function (req, res) {
-  // h1= message
-  // h2= err.status
-  // pre #{err.stack}
-
   let fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
 
   elog(`not found : ${fullUrl}`);

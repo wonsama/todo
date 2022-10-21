@@ -113,4 +113,6 @@ app.get("*", function (req, res) {
 });
 
 // Express listen
-app.listen(WEB_PORT, () => ilog("server started..."));
+app.listen(WEB_PORT, () =>
+  ilog(`web server started http://127.0.0.1:${WEB_PORT}`)
+);

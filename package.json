@@ -10,11 +10,11 @@
   "scripts": {
     "wcuser": "SET DEBUG=* & node ./scripts/util/create_user.js",
     "mcuser": "DEBUG=* node ./scripts/util/create_user.js",
-    "mdev": "DEBUG=express:router:route,todo:* nodemon ./app.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
-    "wdev": "SET DEBUG=express:router:route,todo:* & nodemon ./app.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
-    "wcache": "SET DEBUG=express:router:route,todo:* & nodemon ./scripts/sample/redis-cache.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
-    "mcache": "DEBUG=express:router:route,todo:* nodemon ./scripts/sample/redis-cache.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
-    "wtest": "SET DEBUG=express:router:route,todo:* & nodemon ./test.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql"
+    "mdev": "DEBUG=express:router:route,todo:*,query:* nodemon ./app.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
+    "wdev": "SET DEBUG=express:router:route,todo:*,query:* & nodemon ./app.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
+    "wcache": "SET DEBUG=express:router:route,todo:*,query:* & nodemon ./scripts/sample/redis-cache.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
+    "mcache": "DEBUG=express:router:route,todo:*,query:* nodemon ./scripts/sample/redis-cache.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql",
+    "wtest": "SET DEBUG=express:router:route,todo:*,query:* & nodemon ./test.js --ignore **/scripts/docker/** --ignore **/*.md --ignore **/*.sql"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "i18next": "^21.10.0",
     "i18next-fs-backend": "^1.1.5",
     "i18next-http-middleware": "^3.2.1",
+    "ioredis": "^5.2.3",
     "memorystore": "^1.6.7",
     "morgan": "^1.10.0",
     "node-fetch": "^3.2.10",
@@ -49,8 +50,10 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.12",
+    "@types/debug": "^4.1.7",
     "@types/node": "^18.11.0",
+    "@types/pg": "^8.6.5",
+    "autoprefixer": "^10.4.12",
     "nodemon": "^2.0.20",
     "pm2": "^5.2.2",
     "postcss": "^8.4.18",

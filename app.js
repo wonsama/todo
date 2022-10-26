@@ -11,24 +11,21 @@ import * as dotenv from "dotenv";
 
 import bodyParser from "body-parser";
 import connectRedis from "connect-redis";
-import { createClient } from "redis";
 import debug from "debug";
 import express from "express";
 import { fileURLToPath } from "url";
 import path from "path";
+import redis from "ioredis";
 import registerRoutes from "./src/routes/_register.js";
 import session from "express-session";
 
-// import createError from "http-errors";
-// const { join } = path;
-
 // CONFIG - WEB
 const WEB_PORT = process.env.WEB_PORT || 5555;
+const WEB_SESSION_SECRET = process.env.WEB_SESSION_SECRET || "secret";
 
 // CONFIG - REDIS
 const REDIS_HOST = process.env.REDIS_HOST || "127.0.0.1";
 const REDIS_PORT = process.env.REDIS_PORT || 6379;
-const REDIS_PASSWORD = process.env.REDIS_PASSWORD || "";
 
 // LOGGERs
 const dlog = new debug("todo:debug");
@@ -43,20 +40,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // redis client setting
-const redisClient = createClient({
-  socket: {
-    host: REDIS_HOST,
-    port: REDIS_PORT,
-  },
-  password: REDIS_PASSWORD,
-});
+const redisClient = redis.createClient(REDIS_PORT, REDIS_HOST);
 redisClient.on("error", (err) =>
   ilog(`redis client error : ${REDIS_HOST}:${REDIS_PORT} - ${err?.toString()}`)
 );
 redisClient.on("connect", function (err) {
   ilog(`redis client connected : ${REDIS_HOST}:${REDIS_PORT}`);
 });
-await redisClient.connect();
 
 // Express Set
 app.set("views", path.join(__dirname, "./src/views"));
@@ -70,7 +60,7 @@ app.use(express.static(path.join(__dirname, "./src/public")));
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
-    secret: "secret$%^134",
+    secret: WEB_SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -84,15 +74,9 @@ app.use(
 // Express Routes
 registerRoutes(app);
 
-// // 내부 파일 NOT FOUND 오류
-// app.use(function (err, req, res, next) {
-//   console.log(1, err);
-//   next(createError(404));
-// });
-
 // 내부서버 오류
 app.use(function (err, req, res, next) {
-  console.log(2, err);
+  elog("internal error", err);
   res.status(err.status || 500);
   res.render("error", { err });
 });

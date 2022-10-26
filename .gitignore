@@ -105,6 +105,7 @@ dist
 
 # wonsama added
 scripts/docker/postgresql/data/*
+scripts/docker/redis/data/*
 package-lock.json
 yarn.lock
 test.js

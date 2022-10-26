@@ -12,5 +12,6 @@ SELECT
 FROM 
     tb_user 
 where 1=1
-    and user_id ='$1' 
+:exist($1)    and user_id ='$1'
+:exist($2)    and user_pw ='$2'
     and is_use = true

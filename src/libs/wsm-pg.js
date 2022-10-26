@@ -16,18 +16,19 @@ const { Client } = pg;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const qlog = new debug("todo:query");
+const dlog = new debug("query:debug");
+const elog = new debug("query:error");
 
 /**
  * 쿼리를 수행한다
  * @param {string} prefix 접두사 (.env 설정 정보 참조용)
  * @param {string} domain 도메인
  * @param {string} seq 일련번호
- * @param {string} params 파라미터
+ * @param {array} params 파라미터
  * @returns 쿼리 수행 결과
  */
-export async function getQuery(prefix, domain, seq, params) {
-  qlog("run query :\n", _load(domain, seq, params));
+export default async function query(prefix, domain, seq, params) {
+  dlog("query", prefix, domain, seq, params);
 
   let client = getClient(prefix);
 
@@ -35,8 +36,6 @@ export async function getQuery(prefix, domain, seq, params) {
 
   let res = await client.query(_load(domain, seq, params), []);
   client.end();
-
-  // console.log(res);
 
   return {
     rowCount: res.rowCount,
@@ -50,7 +49,7 @@ export async function getQuery(prefix, domain, seq, params) {
  * 쿼리 정보를 읽어들인다
  * @param {string} domain 업무구분
  * @param {string} seq 4자리 시퀀스, 0000 부터 시작
- * @param {string} params 파라미터 목록 (sql에서는 1부터 매칭)
+ * @param {array} params 파라미터 목록 (sql에서는 1부터 매칭)
  */
 function _load(domain = "st", seq = "0000", params = []) {
   let sql = fs.readFileSync(
@@ -78,7 +77,9 @@ function _load(domain = "st", seq = "0000", params = []) {
   });
   split = split.filter((x) => x.trim() != "");
 
-  return split.join("\r\n");
+  let res = split.join("\r\n");
+  dlog("_load", res);
+  return res;
 }
 
 /**
